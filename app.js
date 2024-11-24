@@ -385,7 +385,7 @@ app.post('/forgot', async (req, res) => {
   let user = await userSchema.findOne({ email })
   if (user && emailSpamProtector) {
     const key = jwt.sign({ id: user._id }, secretKey, { expiresIn: '5m' });
-    const link = `https://todoapp-yj25im9r.b4a.run//forgot/password/${key}/${email}`
+    const link = `https://todoapp-yj25im9r.b4a.run/forgot/password/${key}/${email}`
     
     sendRecoveryMail(email, link)
     console.log(link)
