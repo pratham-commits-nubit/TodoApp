@@ -1,0 +1,441 @@
+
+<!--Website: wwww.codingdung.com-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Template</title>
+    <link rel="stylesheet" href="style.css">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<style>
+     body {
+        background: #fff;
+        max-width: 100vw;
+        overflow-x: hidden;
+        /* margin: 1vh 2vw; */
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    }
+
+    header {
+        top: 0%;
+        /* position: sticky; */
+    }
+
+    ul div li img {
+        height: 10vh;
+        width: 100%;
+        position: relative;
+    }
+
+    ul {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position:relative;
+        right:2.5vw
+    }
+
+    ul div {
+        display: flex;
+        list-style: none;
+        align-items: center;
+        gap: 1vw;
+    }
+
+    ul li button {
+        padding: 0.8vw;
+        font-size: small;
+        font-style: none;
+        background: red;
+        border: 0px;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    button a {
+        text-decoration: none;
+        color: white;
+    }
+
+    li button {
+        width: 100.5%;
+        height: 40px;
+        background-color: red;
+        color: #fff;
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    /* @media screen and (max-width: 700px) {
+        .ul-li2 {
+            gap: 1.75vw;
+            /* margin-right: -6vw; */
+        /*}
+        ul{
+            right:-2.5vw;
+        }
+
+        li img {
+            margin-left: -11vw;
+        }
+
+        .ul-li2 li a {
+            font-size: small;
+        }
+
+        .ul-li button {
+            padding: 6px;
+        }
+
+
+        header {
+            padding-top: 1%;
+        }
+
+    } */
+    /*
+    
+    ul div li img{
+        height: 10vh;
+        width: 100%;
+        position:relative;
+    }
+    ul{
+        font-size: small;
+        display: flex;
+        justify-content:space-between;
+        align-items: center;
+        position:relative;
+    }
+    ul div{
+        display: flex;
+        list-style: none;
+        align-items: center;
+    }
+    .ul-li {
+        gap: 1vw;
+    }
+
+    ul li button{
+        padding: 1vw;
+        font-size: small;
+        font-style: none;
+        background: red;
+        border: 0px;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    li button {
+    width: 100.5%;
+    height: 40px;
+    background-color: red;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    } */
+    button a{
+        text-decoration: none;
+        color: white;
+    }
+
+    .container {
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 20px;
+    padding-bottom: 30px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+
+    table{
+        width: 100%;
+        position: relative;
+    }
+    button,input[type="button"]{
+        background: red;
+    }
+    
+    .list-group-item-action.active {
+            background-color: #c21414c4; /* Red background for active items */
+            border-color: #c21414c4;
+    }
+    .logo-session{
+       height: 5vh;
+       width: 2.5vw;
+       border-radius: 100%;
+       position: relative;
+    }
+    .box{
+        height: 9vh;
+        padding: 0px;
+        position: relative;
+        max-height: min-content;
+        display: flex;
+        gap: 1vw;
+        align-items: center;
+        transition: 0.5;
+        border: 1px solid rgb(223, 223, 223);
+        border-radius: 5px;
+        padding: 0px 10px;
+        font-size:small;
+    }
+    .box:hover{
+        background: #e9e9e9;
+        cursor: pointer;
+    }
+    .other-sessions{
+        display: flex;
+        flex-direction: column;
+        gap: 2vh;
+    }
+    .delete img{
+        position:relative;
+        z-index:1;
+        right:-5vw;
+        justify-self:right;
+    }
+    .delete{
+       display:grid;
+       justify-content:right;
+       justify-items:right;
+    }
+    .ssss{
+        display:grid;
+        gap:2vh; 
+    } 
+
+    @media screen and (max-width: 700px) {
+        .ul-li2{
+            gap: 1.75vw;
+            /* margin-right: -6vw; */
+        }
+        ul{
+            right:2.5vw;
+        }
+        li img {
+            margin-left: -6.5vw;
+        }
+        .ul-li2 li a{
+            font-size: small;
+        }
+        .ul-li button{
+            padding: 6px;
+        }
+        
+        header{
+            padding-top: 1%;
+        }
+    
+    }
+
+</style>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <div class="ul-li">
+                    <li class="ul-li-img"><img src="images/logo1.png" alt=""></li>
+                </div>
+                <div class="ul-li ul-li2">
+                    <li><a style="text-decoration: none; color:black ;" href="/todo">Home</a></li>
+                    <!-- <li><a style="text-decoration: none; color:black ;" href="/#About">About</a></li> -->
+                    <% if (!token) { %>
+                    <li><button><a href="/signup">Sign up</a></button></li>
+                    <li><button><a href="/signin">Sign in</a></button></li>
+                    <% } else {%>
+                    <li><a style="text-decoration: none; color:black ;" href="/profile">Profile</a></li>
+                    <li><button><a href="/logout">Log out</a></button></li>
+                    <% } %>
+                </div>
+            </ul>
+        </nav>
+    </header>
+    <div class="container light-style flex-grow-1 container-p-y">
+        <h4 class="font-weight-bold py-3 mb-4">
+            Account settings
+        </h4>
+        <div class="card overflow-hidden">
+            <div class="row no-gutters row-bordered row-border-light">
+                <div class="col-md-3 pt-0"> 
+                    <div class="list-group list-group-flush account-settings-links">
+                        <a class="list-group-item list-group-item-action active" data-toggle="list" href="#account-general">General</a>
+                        <a class="list-group-item list-group-item-action" data-toggle="list" href="#account-change-password">Change password</a>
+                        <a class="list-group-item list-group-item-action" data-toggle="list" href="#account-info">Info</a>
+                        <a class="list-group-item list-group-item-action" data-toggle="list" href="#sessions">Sessions</a>
+                    </div>
+                </div>
+                <div class="col-md-9">
+                    <div class="tab-content">
+                        <div class="tab-pane fade active show" id="account-general">
+                            <!-- <div class="card-body media align-items-center">
+                                <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt
+                                    class="d-block ui-w-80">
+                                <div class="media-body ml-4">
+                                    <label class="btn btn-outline-primary">
+                                        Upload new photo
+                                        <input type="file" class="account-settings-fileinput">
+                                    </label> &nbsp;
+                                    <button type="button" class="btn btn-default md-btn-flat">Reset</button>
+                                    <div class="text-light small mt-1">Allowed JPG, GIF or PNG. Max size of 800K</div>
+                                </div>
+                            </div> -->
+                            <hr class="border-light m-0">
+                            <div class="card-body">
+                                <!-- <div class="form-group">
+                                    <label class="form-label">Name</label>
+                                    <input type="text" class="form-control" >
+                                </div> -->
+                                <div class="form-group">
+                                    <label class="form-label">E-mail</label>
+                                    <input type="text" class="form-control mb-1" value="<%=email%>" readonly>
+                                    <!-- <div class="alert alert-warning mt-3">
+                                        Your email is not confirmed. Please check your inbox.<br>
+                                        <a href="javascript:void(0)">Resend confirmation</a>
+                                    </div> -->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="account-change-password">
+                            <div class="card-body pb-2">
+                                <div class="form-group">
+                                    <label style="display: block;" class="form-label">Change your password:</label>&nbsp;
+                                    <button type="button" class="btn btn-danger"><a href="/forgot">Change password!</a></button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="account-info">
+                            <div class="card-body pb-2">
+                                <table border="1">
+                                    <tr>
+                                        <th>Total Todos</th>
+                                        <th>Complete</th>
+                                        <th>Incompleted</th>
+                                    </tr>
+                                    <tr>
+                                        <td><%=todoLength%></td>
+                                        <td><%=checked.length%></td>
+                                        <td><%=todoLength - checked.length%></td>
+                                    </tr>
+                                </table>
+                                <div class="form-group" style="margin-top: 6vh;">
+                                    <h6 style="display: block; " class="mb-4">Accound Created Since:</h6>
+                                    <input type="date" name="" id="" value="<%=date%>" readonly>
+                                </div>
+                            </div>
+                            <hr class="border-light m-0">
+                            <div class="card-body pb-2">
+                                <h6 class="mb-4">Terminate Account:</h6>
+                                <form method='post' action="/profile/delete/<%=email%>">
+                                    <button class="btn btn-danger">Terminate Account</button>&nbsp;
+                                </form>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="sessions" style="overflow-y:scroll; max-height: 49.5vh;">
+                            <div class="ssss card-body pb-2">
+                                <div id="current-sessions">
+                                    <p style="text-decoration: underline; color:blue;">This Device:</p>
+                                    <div class="current-sessions">
+                                        <div class="box" style="position: relative;  ">
+                                            <span>
+                                                <div style="display: grid; justify-content: center; align-content: center; padding: 20px;" class="logo-session">
+                                                    <img src="<%=`images/${((token.myDevice.os.name).toLowerCase()).replace(/\s/g, '')}.png`%>" alt="🚫">
+                                                </div>
+                                            </span>
+                                            <span style="position: relative; top: 1vh;">
+                                                  <p style="position: relative; top: 3vh;"><%= `Browser: ${token.myDevice.client.name}` %></p>
+                                                  <p><%=`Location: ${token.myDeviceData.country},${token.myDeviceData.regionName},${token.myDeviceData.city}`%></p>
+                                                  <p style="position: relative; top: -3vh;"><%= `IP: ${token.myDeviceData.query}` %></p>
+                                            </span>
+                                            <!-- <span class="delete">
+                                                <img height="25" src="images/delete.png" alt="">
+                                            </span> -->
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="other-sessions">
+                                    <p style="text-decoration: underline; color:blue;">Other Devices:</p>
+                                    <div class="other-sessions">
+                                    <% sessions.forEach(element => { %>
+                                            <div class="box" style="position: relative; ">
+                                                <span>
+                                                    <div style="display: grid; justify-content: center; align-content: center; padding: 20px;" class="logo-session">
+                                                        <img src="<%=`images/${((element.decodedToken.myDevice.os.name).toLowerCase()).replace(/\s/g, '')}.png`%>" alt="🚫">
+                                                    </div>
+                                                </span>
+                                                <span style="position: relative; top: 1vh;">
+                                                    <p style="position: relative; top: 3vh;">
+                                                        <%= `Browser: ${element.decodedToken.myDevice.client.name}` %>
+                                                        &nbsp;&nbsp;&nbsp;
+                                                      </p>
+                                                      <p><%=`Location:${element.decodedToken.myDeviceData.country},${element.decodedToken.myDeviceData.regionName},${element.decodedToken.myDeviceData.city}`%></p>
+                                                      <p style="position: relative; top: -3vh;"><%= `IP: ${element.decodedToken.myDeviceData.query}` %></p>
+                                                </span>
+                                                <span class="delete">
+                                                    <img height="25" src="images/delete.png" alt="">
+                                                    <p class="token-none" style="display: none; "><%=element.Token%></p>
+                                                </span>
+                                            </div>
+                                    <% }) %>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- <div class="text-right mt-3">
+            <button type="button" class="btn btn-danger">Save changes</button>&nbsp;
+            <button type="button" class="btn btn-default">Cancel</button>
+        </div> -->
+    </div>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+
+async function deleteUser (token) {
+    try {
+        const response = await fetch('/profile/session/delete', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({token})
+        });
+
+        const textResponse = await response.text(); // Get the response as text first
+        console.log('Raw response:', textResponse); // Log the raw response
+
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+
+        const result = JSON.parse(textResponse); // Parse the text as JSON
+        console.log('Success:', result);
+        location.reload();
+    } catch (error) {
+        console.log('Error:', error);  // Log only the error message
+    }
+}
+document.querySelectorAll('.delete').forEach(button => {
+    button.addEventListener('click', (event) => {
+        const token = event.target.closest('.box').querySelector('.token-none').innerText;
+        console.log(token)
+        deleteUser(token);
+    });
+});
+
+    </script>
+</body>
+
+</html>

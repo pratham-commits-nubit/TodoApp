@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo App | SignUp</title>
+</head>
+<script src="https://www.google.com/recaptcha/api.js"></script>
+<style>
+    body{
+        padding: 1vh 1vw;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    }
+    ul div li img{
+        height: 10vh;
+        width: 100%;
+    }
+    ul{
+        display: flex;
+        justify-content:space-between;
+        /* align-items: center; */
+    }
+    ul div {
+        display: flex;
+        list-style: none;
+        align-items: center;
+        gap: 1vw;
+        
+    }
+    button{
+        padding: 0.8vw;
+        font-size: small;
+        font-style: none;
+        background: red;
+        border: 0px;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    button a{
+        text-decoration: none;
+        color: white;
+    }
+
+    .container {
+    max-width: 400px;
+    margin: 40px auto;
+    padding: 20px;
+    padding-bottom: 30px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+}
+.signup-form {
+    margin-top: 20px;
+}
+
+.signup-form h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#signup-form label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+#signup-form input {
+    width: 98.5%;
+    height: 40px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+}
+
+button {
+    width: 100.5%;
+    height: 40px;
+    background-color: red;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 700px) {
+        .ul-li2{
+            gap: 1.75vw;
+            /* margin-right: -6vw; */
+        }
+        .ul-li-img img{
+            margin-left: -11vw;
+        }
+        .ul-li2 li a{
+            font-size: small;
+        }
+        .ul-li button{
+            padding: 6px;
+        }
+        .button{
+            width: 40%;
+        }
+}
+.msg{
+    border: 1px solid red;
+    background: rgba(255, 0, 0, 0.178);
+    color: red;
+    display: grid;
+    justify-content: center;
+}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="signup-form">
+            <h2>Signup</h2>
+            <form id="signup-form" method="post" action="/account/delete/password">
+                <label for="password">Terminate Account</label>
+                <input type="password" id="password" name="password" required>
+                <div style="position: relative;" name="g-recaptcha-response" class="g-recaptcha" data-sitekey="6LcMoWkqAAAAAAJXkVPIK743ZEAlIvkxgcCTgE28"></div>
+                <input type="submit" value="Terminate Account">
+            </form>
+            <div style="display:grid;
+            justify-content:center; position:relative; top:5px">
+                <a href="/signin">Already have a account?</a>
+            </div>
+        </div>
+    </div>
+    <script>
+        let form = document.querySelector('form')
+
+        form.addEventListener('submit', async(e)=>{
+            console.log("Form Submitting")
+            e.preventDefault()
+            
+            const captchaResponse = grecaptcha.getResponse()
+
+            const password = document.querySelector('#password').value;
+            const formData = {
+            password: password,
+            captcha: captchaResponse
+            };
+            console.log(password)
+            if(!password){
+                alert('Captcha not filled!')
+            }
+            else{
+                form.submit()
+                // fetch('http://localhost:4000/account/delete/password',{
+                //     method:"POST",
+                //     headers: {
+                //     'Content-Type': 'application/json'
+                //     },
+                //     body: JSON.stringify(formData)
+                
+                // })
+                // .then( res => res.json)
+
+            }
+        })
+    </script>
+</body>
+</html>
+<body>
+    

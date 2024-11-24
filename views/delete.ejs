@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Circular Button with Full Border</title>
+    <script src="https://www.google.com/recaptcha/api.js"></script>
+    <style>
+
+         button{
+        padding: 0.8vw;
+        font-size: small;
+        font-style: none;
+        background: red;
+        border: 0px;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    button a{
+        text-decoration: none;
+        color: white;
+    }
+
+    .container {
+    width: 400px;
+    height: 50vh;
+    margin: 40px auto;
+    padding: 20px;
+    display: grid;
+    justify-content: center;
+    padding-bottom: 30px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+}
+.extra{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    position: relative;
+    top: 5vh;
+}
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: red;
+        }
+
+        .button-container {
+            position: relative;
+            display: flex;
+            justify-content: center;
+        }
+
+        .circular-button {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background-color: transparent;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid black; /* Initial border */
+        }
+
+        .progress {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: conic-gradient(red 0%, transparent 0%);
+            transition: background 0.1s linear;
+        }
+
+        .percentage {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 20px;
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="signup-form">
+            <h2 style="position: relative; justify-self:center;">Terminate Account:</h2> 
+            <div class="button-container">
+                <a href="">
+                    <button id="circularButton" class="circular-button">
+                        <div class="progress" id="progress"></div>
+                        <div class="percentage" id="percentage">Hold Me!</div>
+                    </button>
+                </a>
+            </div>
+            <div class="extra">
+                <p style="position: relative; text-align: center;">You must think twice before deleting </p>
+            </div>
+        </div>
+    </div>
+    <script>
+        let isHolding = false;
+        let circumference = 0;
+        const button = document.getElementById('circularButton');
+        const progress = document.getElementById('progress');
+        const percentageDisplay = document.getElementById('percentage');
+
+        button.addEventListener('mousedown', () => {
+            isHolding = true;
+            circumference = 0;
+            updateCircumference();
+            button.style.scale = 1.1
+        });
+
+        button.addEventListener('mouseup', () => {
+            isHolding = false;
+            resetProgress();
+            button.style.scale = 1
+
+        });
+
+        button.addEventListener('mouseleave', () => {
+            isHolding = false;
+            resetProgress();
+            button.style.scale = 1
+        });
+
+        // Add touch events for mobile support
+        button.addEventListener('touchstart', () => {
+            isHolding = true;
+            circumference = 0;
+            updateCircumference();
+        });
+
+        button.addEventListener('touchend', () => {
+            isHolding = false;
+            resetProgress();
+        });
+
+        function updateCircumference() {
+            if (isHolding && circumference < 100) {
+                circumference += 2.5; // Increment the circumference
+                const angle = (circumference / 100) * 360; // Calculate the angle for the conic gradient
+                progress.style.background = `conic-gradient(red 0deg ${angle}deg, transparent ${angle}deg 360deg)`; // Update the gradient
+                if (circumference == 100) {
+                    percentageDisplay.textContent = "Redirecting!"; // Update percentage display
+                    location.href = "http://192.168.0.103:4000/account/delete/password"
+
+                }
+                setTimeout(updateCircumference, 100); // Update every 100ms
+            }
+        }
+
+        function resetProgress() {
+            progress.style.background = 'conic-gradient(red 0deg 0deg, transparent 0deg 360deg)'; // Reset to 0%
+            // percentageDisplay.textContent = '0%'; // Reset percentage display
+        }
+    </script>
+</body>
+</html>

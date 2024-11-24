@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo App | Todo</title>
+</head>
+<style>
+    body{
+        padding: 0;
+        margin: 0;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    }
+    ul div li img{
+        height: 10vh;
+        width: 100%;
+    }
+    ul{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    ul div {
+        display: flex;
+        list-style: none;
+        align-items: center;
+        gap: 1vw;
+        
+    }
+    button{
+        padding: 0.8vw;
+        font-size: small;
+        font-style: none;
+        background: red;
+        border: 0px;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    button a{
+        text-decoration: none;
+        color: white;
+    }
+
+    #stats{
+        display:flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 3vw;
+        border: 2px solid black;
+        border-radius:10px ;
+        padding: 1vh 2vw;
+    }
+    .first-part-progress{
+        width: 50%;
+    }
+    .first-p{
+        font-size: x-large;
+        font-weight: 500;
+        margin-top: 0px;
+        margin-bottom: 0vh;
+    }
+    .second-p{
+        margin-top: 1vh;
+        margin-bottom: 3vh;
+    }
+    .progressBar{
+        height: 2vh;
+        width: 100%;
+        background: black ;
+        border-radius: 8px;
+    }
+    .progress{
+        height:100%;
+        width: 0%;
+        background: red;
+        border-radius:8px
+    }
+    .second-part-progress{
+        height: 20vh;
+        width: 10vw;
+        background: red;
+        border-radius: 100%;
+        text-align: center;
+        margin-bottom: 0px;
+    }
+    .second-part-progress p {
+        text-align: center;
+        transform: translateY(20%);
+        font-size: xx-large;
+        font-weight: bold;
+        color: white;
+    }
+    #createTodo{
+        display: flex;
+        align-items: center;
+        margin-top: 2.5vh;
+        gap: 1vw;
+    }
+    .input{
+        width: 100vw;
+        height: 8vh;
+    }
+    .input input{
+        height:100% ;
+        font-size:x-large;
+    }
+    .two{
+        height: 150%;
+        width: 5%;
+        text-align: center;
+        background: red;
+        border-radius: 100% ;
+        color: white;
+        font-size: large;
+        font-weight: 900;
+    }
+    #createTodo div input{
+        width:100%;
+    }
+    .todo{
+        display: flex;
+        align-items: center;
+        gap: 4vw;
+        border: 1px solid black;
+        border-radius: 7px;
+        justify-content: space-between;
+        margin: 1vh 2vw;
+
+        
+    }
+    .title{
+        font-size: x-large;
+    }
+    .todo div {
+        display: flex;
+        align-items: center;
+    }
+    .todo input{
+        height: 3vh;
+        width: 4vw;
+        border: 2px solid black;
+        border-radius: 100%;
+    }
+    .feature{
+        padding:0px 20px;
+    }
+    .edit img{
+        width:2vw;
+    }
+    .edit{
+        background:transparent;
+    }
+    li button {
+    width: 100.5%;
+    height: 40px;
+    /* background-color: red; */
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+       
+    @media screen and (max-width: 700px) {
+        .ul-li2{
+            gap: 1.75vw;
+            /* margin-right: -6vw; */
+        }
+        .ul-li-img img{
+            margin-left: -11vw;
+        }
+        .ul-li2 li a{
+            font-size: small;
+        }
+        .ul-li button{
+            padding: 6px;
+        }
+        .button{
+            width: 40%;
+        } 
+        
+        header{
+            padding-top: 1%;
+        }
+        .head-text{
+            font-size:  4rem;
+        }
+        .second-part-progress{
+            width: 30vw;
+            height: 15vh;
+        }
+        .two{
+            width: 12.5vw;
+            align-items: center;
+        }
+}
+</style>
+<body>
+<section  style="top:0%; position: sticky; background: white; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); padding:  1vh 1.5vw;
+">
+    <header>
+        <nav>
+            <ul>
+                <div class="ul-li">
+                    <li class="ul-li-img"><img src="images/logo1.png" alt=""></li>
+                </div>
+                <div class="ul-li ul-li2">
+                    <li><a style="text-decoration: none; color:black ;" href="/todo">Home</a></li>
+                    <!-- <li><a style="text-decoration: none; color:black ;" href="/#About">About</a></li> -->
+                    <% if (!token) { %>
+                        <li><button><a href="/signup">Sign up</a></button></li>
+                        <li><button><a href="/signin">Sign in</a></button></li>
+                    <% } else {%>
+                    <li><a style="text-decoration: none; color:black ;" href="/profile">Profile</a></li>
+                    <li><button><a href="/logout">Log out</a></button></li>
+                    <% } %>
+                </div>
+            </ul>
+        </nav>
+    </header>
+    <hr>
+    <main style=" position: sticky;">
+        <section id="stats">
+            <div class="first-part-progress">
+                <p class="first-p" >Todo Done</p>
+                <p class="second-p">Keep it up!</p>
+                <div class="progressBar">
+                    <div class="progress"></div>
+                </div>
+            </div>
+            <div class="second-part-progress">
+                <p>0/0</p>
+            </div>
+        </section>
+        <form id="createTodo" method="post" action="/todo/create">
+            <div class="input">
+                <input type="text" name="title">
+            </div>
+            <div class="two"><button>+</button><div>
+        </form>
+        <br>
+    </main>
+</section>
+    <h1 >Todos:</h1>
+    <section id="todo">
+        <% todo.forEach(function(item){ %>
+            <div class="todo">
+                <div>
+                    <% if(item.checked){%>
+                        <input  class="check true-todo" type="checkbox" checked>
+                        <p style="text-decoration: line-through;" class="title"><%=item.title%></p>
+                    <% } else { %>
+                        <input class="check false-todo" type="checkbox">
+                        <p class="title"><%=item.title%></p>
+                    <% } %>
+                </div>
+                <div style="display: flex; gap: 2vw;" class="feature">
+                    <button class="edit edit"><img src="images/edit.png"></button>
+                    <button class="edit delete"><img src="images/delete.png"></button>
+                </div>
+            </div>
+        <% }) %>
+    </section>
+    <script>
+        document.querySelectorAll('.check').forEach(element => {
+            element.addEventListener('click',(event)=>{
+                let todos = Array.from(document.getElementById('todo').children)
+                let clicked = todos.indexOf((event.target.parentNode).parentNode)
+                let parent = event.target.parentNode
+                let title = parent.querySelector('.title')
+                if(event.target.checked){
+                    title.style.textDecoration = "line-through"
+                        let data = {todos:todos,clicked:clicked,check:true}
+                        if(data){
+                            sendData(data)
+                        }
+
+                }
+                else{
+                    title.style.textDecoration = "none"
+                        let data = {todos:todos,clicked:clicked,check:false}
+                        if(data){
+                            sendData(data)
+                        } 
+                   }   
+                });
+        });
+
+        function sendData(data) {
+            // const data = { value: document.getElementById('dataInput').value };
+            
+            fetch('/todo', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Success:', data);
+            })
+            .catch((error) => {
+                console.log('Error:', error);
+            });
+            setTimeout(() => {
+               location.reload(true)
+            }, 500);
+        }
+        function EditTodo() {
+            document.querySelectorAll('.edit').forEach(element => {
+            element.addEventListener('click',(event)=>{
+                let todos = Array.from(document.getElementById('todo').children)
+                let clicked = todos.indexOf(((event.target.parentNode).parentNode).parentNode)
+                let parent = event.target.parentNode
+                let title = parent.querySelector('.title')
+                
+                let length = ((event.target.parentNode).className).length
+                console.log(event.target.parentNode.className.slice(4,length))
+                location.href = `${((event.target.parentNode).className).slice(4,length)}/${clicked}`
+
+
+            });
+        });
+        }
+        function progressBar() {
+            let progress = document.querySelector('.progress')
+            let progressBar = document.querySelector('.progressBar')
+            let units = document.querySelector('.second-part-progress > p')
+            let todoCount = document.querySelector('#todo').childElementCount
+            let checkedTodos = document.querySelectorAll('.true-todo').length
+
+            console.log(todoCount, checkedTodos)
+            progress.style.width = `${checkedTodos * 100 / todoCount}%`
+            units.innerText = `${checkedTodos}/${todoCount}`
+        }
+        document.querySelector('.check').addEventListener('click',()=>{
+            progressBar()
+        })
+
+        progressBar()
+        EditTodo()
+    </script>
+</body>
+</html>

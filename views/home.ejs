@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo App | Home</title>
+</head>
+<style>
+    body {
+        background: #fff;
+        max-width: 100vw;
+        overflow-x: hidden;
+        /* margin: 1vh 2vw; */
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    }
+
+    header {
+        top: 0%;
+        position: sticky;
+    }
+
+    ul div li img {
+        height: 10vh;
+        width: 100%;
+        position: relative;
+    }
+
+    ul {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position:relative;
+        right:2.5vw
+    }
+
+    ul div {
+        display: flex;
+        list-style: none;
+        align-items: center;
+        gap: 1vw;
+    }
+
+    ul li button {
+        padding: 0.8vw;
+        font-size: small;
+        font-style: none;
+        background: red;
+        border: 0px;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    button a {
+        text-decoration: none;
+        color: white;
+    }
+
+    .head-text {
+        font-size: 4rem;
+        text-align: center;
+    }
+
+    .second {
+        margin-top: -10vh;
+    }
+
+    h5 {
+        text-align: center;
+    }
+
+    main button {
+        position: relative;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .theme {
+        height: 10vh;
+        width: 5vw;
+        border-radius: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        position: absolute;
+        background: grey;
+    }
+
+    .toggle {
+        height: 10vh;
+        width: 5vw;
+        border-radius: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        position: absolute;
+        transition: 1s ease;
+    }
+
+    .checkbox {
+        position: absolute;
+        opacity: 0;
+    }
+
+    .moon {
+        font-size: 1.5rem;
+        position: absolute;
+        transition: 1s ease;
+        scale: 1;
+        color: white;
+    }
+
+    .sun {
+        font-size: 1.5rem;
+        position: absolute;
+        transition: 1s ease;
+        opacity: 0;
+        color: black;
+        z-index: 1;
+    }
+
+    .body {
+        height: 1250px;
+        width: 2646px;
+        position: absolute;
+        background-color: rgb(0, 0, 0);
+        z-index: -100;
+        clip-path: circle(0% at 50% 50%);
+        transition: 1s ease;
+    }
+
+    input:checked~.body {
+        clip-path: circle(70.7% at 50% 50%);
+        
+    }
+
+    input:checked~.toggle {
+        background: rgb(255, 255, 255);
+    }
+
+    input:checked~.sun {
+        transform: rotate(360deg) scale(1);
+        opacity: 1;
+    }
+
+    input:checked~.moon {
+        transform: rotate(360deg) scale(0);
+    }
+
+    footer {
+        margin-top: 30vh;
+    }
+
+    /* ul {
+        background: #fff;
+    } */
+
+    #cursor {
+        height: 5vh;
+        width: 2.5vw;
+        background: white;
+        border-radius: 100%;
+        position: fixed;
+        transform: translate(-50%, -50%);
+        mix-blend-mode: difference;
+        z-index: 100;
+        pointer-events: none;
+    }
+
+    p,
+    h1,
+    h5 {
+        color: black;
+    }
+
+    p:hover~#cursor {
+        transform: scale(4);
+    }
+
+    .button {
+        background: red;
+        color: white;
+        height: 5vh;
+        width: 10vw;
+        border-radius: 5px;
+        border: 0px;
+    }
+
+    li button {
+        width: 100.5%;
+        height: 40px;
+        background-color: red;
+        color: #fff;
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    @media screen and (max-width: 700px) {
+        .ul-li2 {
+            gap: 1.75vw;
+            /* margin-right: -6vw; */
+        }
+        ul{
+            right:-2.5vw;
+        }
+
+        li img {
+            margin-left: -11vw;
+        }
+
+        .ul-li2 li a {
+            font-size: small;
+        }
+
+        .ul-li button {
+            padding: 6px;
+        }
+
+        .button {
+            width: 40%;
+        }
+
+        .theme {
+            width:20%;
+            margin-right:25vw;
+        }
+
+        #cursor {
+            display: none;
+        }
+
+        header {
+            padding-top: 1%;
+        }
+
+        .head-text {
+            font-size: 4rem;
+        }
+    }
+</style>
+</head>
+</style>
+
+<body>
+    <div id="cursor"></div>
+    <header>
+        <nav>
+            <ul>
+                <div class="ul-li">
+                    <li class="ul-li-img"><img src="images/logo1.png" alt=""></li>
+                </div>
+                <div class="ul-li ul-li2">
+                    <!-- <li><a style="text-decoration: none; color:black ;" href="/todo">Home</a></li>
+                    <li><a style="text-decoration: none; color:black ;" href="/#About">About</a></li>
+                    <% if (!token) { %>
+                    <li><button><a href="/signup">Sign up</a></button></li>
+                    <li><button><a href="/signin">Sign in</a></button></li>
+                    <% } else {%>
+                    <li><a style="text-decoration: none; color:black ;" href="/profile">Profile</a></li>
+                    <li><button><a href="/logout">Log out</a></button></li>
+                    <% } %> -->
+                    <li class="ul-li ul-li2" style="display: flex; align-items: center; justify-content: center; margin-left: 2.5vw;">
+                        <label class="theme"> 
+                            <input type="checkbox" class="checkbox"> 
+                            <ion-icon name="moon"class="moon"></ion-icon> 
+                            <ion-icon name="sunny" class="sun"></ion-icon> 
+                            <span class="toggle"></span>
+                            <div class="body"></div>
+                        </label>
+                    </li>
+                </div>
+            </ul>
+        </nav>
+    </header>
+    <main id="Home" style="position: relative;">
+        <div class="head-text">
+            <p class="first">Organize your</p>
+            <p class="second">work and life,finally.</p>
+        </div>
+        <h5>Become focused,organized and calm with todoist app. The World's #1 task manager app.</h5>
+        <% if(token){%> <button class="button"><a href="/todo">Make Todolist Now</a></button>
+            <% } else {%> <button class="button"><a href="/signup">Make Todolist Now</a></button>
+                <% } %>
+    </main>
+    <footer id="About" style="position: relative;">
+        <h1>About Us</h1>
+        <p> Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quam aspernatur, repudiandae autem voluptatibus
+            deleniti sed eius, ratione aperiam minus dicta similique corporis obcaecati nostrum molestias sint.
+            Eligendi, vitae beatae voluptatibus placeat, ipsa recusandae tempora neque nesciunt soluta ullam cum
+            architecto assumenda atque, mollitia blanditiis. Repudiandae id deserunt omnis quis numquam? </p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat praesentium obcaecati explicabo quae aut,
+            porro unde consequuntur sunt dolor ipsa ad omnis architecto, deserunt libero ratione nostrum sit debitis!
+            Ipsum modi nam quas dolor animi blanditiis, dolore aperiam cum sint minus quasi provident debitis et fugiat
+            repellat! Nulla earum odio ipsa quas deleniti quae neque veniam voluptatibus assumenda laboriosam voluptatem
+            libero id, distinctio aspernatur nostrum consequuntur officia, ducimus tempora eius enim in nobis ea?
+            Repellat porro minima exercitationem eos inventore qui possimus assumenda, alias fugit molestiae error
+            tenetur sequi cupiditate eveniet sed corporis dignissimos illum? Omnis, sunt dignissimos! Quibusdam, earum!
+        </p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta, id minima. Quis quo et rerum autem.
+            Molestias nemo rem ducimus cum eligendi pariatur dicta earum quam. Ad excepturi dolor ducimus esse hic
+            possimus amet id repellendus magni? Eius dolore dicta sed architecto corrupti ex culpa? Iusto veritatis
+            consequatur amet odio eligendi dolores ipsam expedita illo fugiat sed, adipisci minima! Sequi illo, ab
+            exercitationem iure cupiditate neque aliquam quaerat. Dolor eius praesentium, quidem excepturi rem officiis
+            earum hic placeat repellat quo, mollitia est tempore culpa suscipit cumque laboriosam, fugiat quod quisquam
+            voluptas corporis. Vero, tenetur magni. Et, perferendis veritatis. Accusamus earum placeat dolore quos quo
+            optio nesciunt asperiores tempora veniam rerum perspiciatis facere similique, ab exercitationem, perferendis
+            impedit necessitatibus doloribus dolorem sapiente. Odio, non repellat molestiae molestias iste aliquid
+            accusantium, atque, dolore delectus debitis inventore recusandae nostrum? Reiciendis eaque modi harum vero
+            repellat odio eos fuga, aspernatur blanditiis odit officia recusandae similique tenetur dolorem consectetur
+            quo! Ducimus pariatur ea iste enim deleniti tenetur labore accusantium perspiciatis natus, quas eaque,
+            eligendi animi inventore veritatis debitis voluptatum excepturi quod aut vitae quasi atque autem? Officia
+            molestias sunt sed eaque facere harum aperiam, incidunt asperiores consectetur ratione dignissimos
+            doloremque illum ipsa error pariatur quae?</p>
+        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Corrupti sint nesciunt quas laborum quo et
+            perspiciatis earum! Error inventore libero enim, natus sequi cupiditate ab ratione dolor tempore dicta
+            pariatur, eius, accusamus quis a. Modi, autem non facilis possimus quae asperiores magni fuga qui, ipsa,
+            cumque atque esse. Perferendis, quae!</p>
+    </footer>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"
+        integrity="sha512-7eHRwcbYkK4d9g/6tD/mhkf++eoTHwpNM9woBxtPUBWm67zeAfFC+HrdoE2GanKeocly/VxeLvIqwvCdk7qScg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        let circle = document.querySelector("#cursor")
+
+        document.querySelector('.checkbox').addEventListener('input', () => {
+
+            let checked = document.querySelector('.checkbox').checked
+            console.log(checked)
+            if (checked) {
+                document.querySelectorAll('p').forEach((elem) => {
+                    elem.style.color = 'white'
+                })
+                document.querySelectorAll('h1').forEach((elem) => {
+                    elem.style.color = 'white'
+                })
+                document.querySelectorAll('h5').forEach((elem) => {
+                    elem.style.color = 'white'
+                })
+
+            }
+            else {
+                document.querySelectorAll('p').forEach((elem) => {
+                    elem.style.color = 'black'
+                })
+                document.querySelectorAll('h1').forEach((elem) => {
+                    elem.style.color = 'black'
+                })
+                document.querySelectorAll('h5').forEach((elem) => {
+                    elem.style.color = 'black'
+                })
+            }
+        })
+
+        window.addEventListener('mousemove', (dets) => {
+            gsap.to(circle, {
+                x: dets.clientX - 25,
+                y: dets.clientY - 30,
+                duration: 0.3,
+                ease: Expo
+            })
+        })
+
+        const button = document.querySelector(".button");
+        button.addEventListener("click", (e) => {
+            e.preventDefault;
+            button.classList.add("animate");
+            setTimeout(() => {
+                button.classList.remove("animate");
+            }, 600);
+        });
+
+
+
+    </script>
+</body>
+
+</html>

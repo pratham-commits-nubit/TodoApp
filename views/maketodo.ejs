@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body {
+        margin: 1vh 2vw;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    }
+
+    ul div li img {
+        height: 10vh;
+        width: 100%;
+    }
+
+    ul {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    ul div {
+        display: flex;
+        list-style: none;
+        align-items: center;
+        gap: 1vw;
+
+    }
+
+    button,
+    input[Type="submit"] {
+        padding: 0.8vw;
+        font-size: small;
+        font-style: none;
+        background: red;
+        border: 0px;
+        border-radius: 5px;
+        cursor: pointer;
+        color: white;
+        display: block;
+
+    }
+
+    button a {
+        text-decoration: none;
+        color: white;
+    }
+
+    input {
+        position: relative;
+        top: -2vh;
+    }
+
+    input[Type="text"] {
+        width: 50%;
+    }
+
+    textarea[Name="desc"] {
+        width: 50.5%;
+        height: 10vh;
+        padding: 10px 0px;
+        box-sizing: border-box;
+        font-family: Arial, sans-serif;
+        font-size: 14px;
+
+    }
+    li button {
+    width: 100.5%;
+    height: 40px;
+    background-color: red;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+    @media screen and (max-width: 700px) {
+       .ul-li2{
+            gap: 1.75vw;
+        }
+        li img{
+            margin-left: -11vw;
+        }
+        .ul-li2 li a{
+            font-size: small;
+        }
+        .ul-li button{
+            padding: 6px;
+        }
+        .button{
+            width: 40%;
+        } 
+        .theme{
+            display: none;
+        }
+        #cursor{
+            display: none;
+        }
+        header{
+            padding-top: 1%;
+        }
+        .head-text{
+            font-size:  4rem;
+        }
+}
+</style>
+
+<body>
+    <!-- <header>
+        <nav>
+            <ul>
+                <div class="ul-li">
+                    <li><img src="images/logo1.png" alt=""></li>
+                </div>
+                <div class="ul-li ul-li2">
+                    <li><a style="text-decoration: none; color:black ;" href="/">Home</a></li>
+                    <li><a style="text-decoration: none; color:black ;" href="/#About">About Us</a></li>
+                    <% if (!token) { %>
+                    <li><button><a href="/signup">Sign up</a></button></li>
+                    <li><button><a href="/signin">Sign in</a></button></li>
+                    <% } else {%>
+                    <li><button><a href="/logout">Log out</a></button></li>
+                    <% } %>
+                </div>
+            </ul>
+        </nav>
+    </header>
+    <hr> -->
+    <main>
+        <h1>Manage Your Todo:</h1>
+        <% if(Tododetails){%>
+            <form action="/todo/edit/save/<%=Tododetails.id%>" method="post">
+                <label for="title">
+                    <h3>Title*</h3>
+                </label>
+                <input class="title" name="title" type="text" placeholder="Enter the title of your todo"
+                    value="<%=Tododetails.title%>" maxlength="50" oninput="charcount(50,'.title','.char-remain-1')"
+                    required>
+                <p style="position: relative; top: -4vh;" class="char-remain-1"></p>
+
+                <label for="desc">
+                    <h3>Description</h3>
+                </label>
+                <textarea class="desc" name="desc" placeholder="Enter the description of your todo"
+                    value="<%=Tododetails.desc%>" maxlength="300"
+                    oninput="charcount(200,'.desc','.char-remain-2')"></textarea>
+                <p style="position: relative; top: -3vh;" class="char-remain-2"></p>
+
+                <label for="startline">
+                    <h3>StartLine*</h3>
+                </label>
+                <input class="startdate-def" name="date_startline" value="<%= Tododetails.dateStart%>" type="date"
+                    required>
+                <input class="starttime-def" name="time_startline" value="<%= Tododetails.timeStart%>" type="time"
+                    required>
+
+                <label for="deadline">
+                    <h3>DeadLine*</h3>
+                </label>
+                <input name="date_deadline" value="<%= Tododetails.dateDead%>" type="date" required>
+                <input name="time_deadline" value="<%= Tododetails.timeDead%>" type="time" required>
+
+                <input style=" position: relative; top: 1vh;" type="submit" name="" id="">
+            </form>
+            <% } else { %>
+                <form action="/todo/create/save" method="post">
+                    <label for="title">
+                        <h3>Title*</h3>
+                    </label>
+                    <input class="title" name="title" type="text" placeholder="Enter the title of your todo"
+                        value="<%=title%>" maxlength="50" oninput="charcount(50,'.title','.char-remain-1')" required>
+                    <p style="position: relative; top: -4vh;" class="char-remain-1"></p>
+
+                    <label for="desc">
+                        <h3>Description</h3>
+                    </label>
+                    <textarea class="desc" name="desc" placeholder="Enter the description of your todo" maxlength="300"
+                        oninput="charcount(200,'.desc','.char-remain-2')"></textarea>
+                    <p style="position: relative; top: -3vh;" class="char-remain-2"></p>
+
+                    <label for="startline">
+                        <h3>StartLine*</h3>
+                    </label>
+                    <input class="startdate" name="date_startline" type="date" required>
+                    <input class="starttime" name="time_startline" type="time" required>
+
+                    <label for="deadline">
+                        <h3>DeadLine*</h3>
+                    </label>
+                    <input name="date_deadline" type="date" required>
+                    <input name="time_deadline" type="time" required>
+                    <input style=" position: relative; top: 1vh;" type="submit" name="" id="">
+                </form>
+                <% } %>
+
+
+    </main>
+    <script>
+        function charcount(maxlength, textinput, char) {
+            let text = document.querySelector(textinput).value
+            let charremain = document.querySelector(char)
+            let textLength = text.length
+            charremain.innerText = `${textLength}/${maxlength}`
+            let percentage = textLength * 100 / maxlength
+
+            if (percentage < 80) {
+                charremain.style.color = "green"
+            }
+            else if (percentage > 80 && percentage < 99) {
+                charremain.style.color = "orange"
+            }
+            else {
+                charremain.style.color = "red"
+            }
+
+            if (percentage == 0) {
+                charremain.style.display = "none"
+            }
+            else {
+                charremain.style.display = "block"
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', (event) => {
+            let startTimeInput = document.querySelector('.starttime');
+            let startDateInput = document.querySelector('.startdate');
+
+            if (startTimeInput && startDateInput) {
+                const now = new Date();
+
+
+                // Extract the date components
+                const year = now.getFullYear();
+                const month = String(now.getMonth() + 1).padStart(2, '0'); // Months are zero-based
+                const day = String(now.getDate()).padStart(2, '0');
+
+                // Extract the time components
+                const hours = String(now.getHours()).padStart(2, '0');
+                const minutes = String(now.getMinutes()).padStart(2, '0');
+
+                // Format the date and time
+                const formattedDate = `${year}-${month}-${day}`;
+                const formattedTime = `${hours}:${minutes}`;
+
+                // Set the values of the input fields
+                startTimeInput.value = formattedTime;
+                startDateInput.value = formattedDate;
+
+                console.log(formattedTime, formattedDate);
+            } else {
+                console.error('Input fields not found');
+            }
+        });
+
+        console.log(formattedTime, formattedDate);
+    </script>
+</body>
+
+</html>
